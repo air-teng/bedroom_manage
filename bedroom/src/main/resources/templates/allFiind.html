@@ -5,9 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
 <title></title>
 
-<link href="css/all.css" rel="stylesheet" type="text/css">
-    <link href="../static/js/bstable/css/bootstrap.min.css" th:href="@{/js/bstable/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-    <link href="../static/js/bstable/css/bootstrap-table.css"  th:href="@{/js/bstable/css/bootstrap-table.css}"  rel="stylesheet" type="text/css">
+<link href="../static/css/all.css" rel="stylesheet" th:href="@{/css/all.css}" type="text/css">
+<link href="../static/js/bstable/css/bootstrap.min.css" th:href="@{/js/bstable/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+<link href="../static/js/bstable/css/bootstrap-table.css" th:href="@{/js/bstable/css/bootstrap-table.css}" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -189,7 +189,7 @@
     })
 
 </script>
-<script src="js/layer_v2.1/layer/layer.js"></script>
+<script src="../static/js/layer_v2.1/layer/layer.js"   th:src="@{/js/layer_v2.1/layer/layer.js}"></script>
 <script>
     function openlayer(id){
         layer.open({
