@@ -1,1 +1,27 @@
-#更改配置文件为yml
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/bedroom?characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+        username: root
+        password: 123456
+    data:
+        mongodb:
+            uri: mongodb://ocradmin:654321@localhost:27017/bedroom	
+    application:
+        name: spring-boot-mongodb
+        
+mybatis:
+    typeAliasesPackage: 
+        com.bedroom.common.pojo
+    mapperLocations: 
+        mappers/*.xml
+    configuration:
+       map-underscore-to-camel-case: true
+
+logging:
+    level: 
+        cn.tedu.mapper: debug
+
+server:
+    port: 8070
