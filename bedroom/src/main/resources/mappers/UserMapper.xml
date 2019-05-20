@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.UserDao">
+	
+	<!-- #判断用户登录账号密码是否正确;并返回用户结果集 -->
+	<select id="userLoginShowUserInfo"  resultType="User">
+		select * from user where user_name=#{userName} and user_password=#{user_password}	
+	</select>
+	
+</mapper>
