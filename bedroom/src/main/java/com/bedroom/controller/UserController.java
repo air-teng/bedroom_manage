@@ -43,7 +43,7 @@ public class UserController {
 			//登录成功将用户信息存入session域中
 			session.setAttribute("user", user);
 			//设置session有效时间
-			session.setMaxInactiveInterval(60*60*24);//24小时
+			session.setMaxInactiveInterval(60*60);//1小时
 		} catch (Exception e) {
 			return AjaxResult.error("登录失败!!!");
 		}

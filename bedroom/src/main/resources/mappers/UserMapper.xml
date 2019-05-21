@@ -4,7 +4,7 @@
 	
 	<!-- #判断用户登录账号密码是否正确;并返回用户结果集 -->
 	<select id="userLoginShowUserInfo"  resultType="User">
-		select * from user where user_name=#{userName} and user_password=#{user_password}	
+		select * from user where user_account=#{userName} and user_password=#{user_password}	
 	</select>
 	
 </mapper>
