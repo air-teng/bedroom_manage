@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.BedroomDao">
+	<select id="getBedroomId" parameterType="String" resultType="Integer">
+		select bedroom_id bedroomId from bedroom
+		<where>
+			unit = #{unitTarget}
+			and 
+			bedroom_code = #{bedroomCodeTarget}
+			and
+			building_id =(select building_id from building where building_code = #{buildingCodeTarget})
+		</where>
+	</select>
+	<select id="getCurBedroom" parameterType="String" resultType="java.util.Map">
+		select b.building_code buildingCode,r.unit unit,r.bedroom_code bedroomCode
+		from 
+			building b 
+			left join bedroom r
+			on r.building_id = b.building_id
+		<where>
+			r.bedroom_id = (select bedroom_id from user where user_account = #{userAccount})
+		</where>
+	</select>
+	<select id="getUnitList" parameterType="String" resultType="String">
+		select unit
+		from 
+			building
+		<where>
+			building_code = #{buildingCode}
+		</where>
+	</select>
+	<select id="getBedroomCodeList" resultType="String">
+		select r.bedroom_code 
+		from 
+			building b
+			left join bedroom r
+			on r.building_id = b.building_id
+		<where>
+			b.building_code = #{buildingCode}
+			and
+			r.unit = #{unit}
+		</where>
+			order by
+            r.bedroom_code
+	</select>
+	<select id="getBuildingCodeList" resultType="String">
+		select building_code buildingCode
+		from building
+	</select>
+</mapper>

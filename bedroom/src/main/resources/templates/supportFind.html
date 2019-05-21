@@ -4,17 +4,25 @@
 <meta charset="UTF-8">
 <title>寝室交换申请</title>
 <link th:href="@{/css/mycss/supportFind.css}" href="../static/css/mycss/supportFind.css" rel="stylesheet" type="text/css"/>
+<script th:inline="javascript">
+	var userPermission = [[${session.user}]];//以thymeleaf的形式从session中取出值
+	/* if(userPermission == null){
+		var path = window.location.href;
+		alert(path.split("/")[0]+"/"+path.split("/")[1]+"/"+path.split("/")[2])
+		window.location.href=path.split("/")[0]+"/"+path.split("/")[1]+"/"+path.split("/")[2];
+	} */
+</script>
 </head>
 <body>
 	<div class="apply_submit_div" id="apply_submit_div">
 		<div id="apply_submit_div_title">学生寝室交换申请</div>
 		<div class="info">
 			<label for="stu_name">学生姓名</label>
-			<input type="text" name="stu_name" value="滕云飞" disabled="disabled"/>
+			<input type="text" name="stu_name" value="testName" disabled="disabled"/>
 		</div>
 		<div class="info">
 			<label for="stu_account">学生学号</label>
-			<input name="stu_account" value="5120155527" disabled="disabled"/>
+			<input name="stu_account" value="testAccount" disabled="disabled"/>
 		</div>
 		<div class="info">
 			<input type="hidden" name="cur_bedroom_id" value="123" disabled="disabled"/>
@@ -24,17 +32,17 @@
 		</div>
 		<div class="info">
 			<label for="building_code">当前寝室</label>
-			<select name="building_code">
+			<select name="building_code" disabled="disabled">
 				<option value="1">西一</option>
 				<option value="2">西二</option>
 				<option value="2">西三</option>
 				<option value="3">西四</option>
 			</select>栋
-			<select name="unit">
+			<select name="unit" disabled="disabled">
 				<option value="A">A</option>
 				<option value="B">B</option>
 			</select>单元
-			<select name="bedroom_code">
+			<select name="bedroom_code" disabled="disabled">
 				<option value="119">119</option>
 				<option value="120">120</option>
 				<option value="121">121</option>
@@ -53,7 +61,7 @@
 				<option value="A">A</option>
 				<option value="B">B</option>
 			</select>单元
-			<select name="bedroom_code_target">
+			<select name="bedroom_code_target" onchange="setTargetBedroomId()">
 				<option value="119">119</option>
 				<option value="120">120</option>
 				<option value="121">121</option>
@@ -65,8 +73,10 @@
 			<textarea name="apply_reason" cols="30" rows="5" style="margin-left:5em;"></textarea>
 		</div>
 		<div class="info">
-			<input type="submit" value="提交申请"></input>
+			<input type="submit" value="提交申请" onclick="submitChange()"></input>
 		</div>
 	</div>
+	<script src="../static/js/jquery/jQuery-2.2.0.min.js" th:src="@{/js/jquery/jQuery-2.2.0.min.js}"></script>
+	<script src="../static/myjs/supportFind.js" th:src="@{/myjs/supportFind.js}"></script>
 </body>
 </html>
