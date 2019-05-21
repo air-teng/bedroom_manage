@@ -6,7 +6,7 @@
 <link th:href="@{/css/mycss/supportFind.css}" href="../static/css/mycss/supportFind.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	<div class="apply_submit_div">
+	<div class="apply_submit_div" id="apply_submit_div">
 		<div id="apply_submit_div_title">学生寝室交换申请</div>
 		<div class="info">
 			<label for="stu_name">学生姓名</label>
@@ -15,6 +15,12 @@
 		<div class="info">
 			<label for="stu_account">学生学号</label>
 			<input name="stu_account" value="5120155527" disabled="disabled"/>
+		</div>
+		<div class="info">
+			<input type="hidden" name="cur_bedroom_id" value="123" disabled="disabled"/>
+		</div>
+		<div class="info">
+			<input type="hidden" name="target_bedroom_id" value="123" disabled="disabled"/>
 		</div>
 		<div class="info">
 			<label for="building_code">当前寝室</label>

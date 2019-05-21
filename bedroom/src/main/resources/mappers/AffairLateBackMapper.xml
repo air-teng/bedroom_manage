@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.AffairLateBackDao">
+	<!-- #判断用户登录账号密码是否正确;并返回用户结果集 -->
+	<insert id="apply"  parameterType="AffairLateBack">
+		insert into affair_late_back
+		(
+			stu_account,
+			back_time,
+			apply_reason,
+			affair_status,
+			apply_time
+		)	
+		values(
+			#{stuAccount},
+			#{backTime},
+			#{applyReason},
+			'0',
+			now()
+		)
+	</insert>
+	
+</mapper>
