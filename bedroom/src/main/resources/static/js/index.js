@@ -372,6 +372,9 @@
                     _html += '</li>'
                 }
             });
+            /**
+             *   左边导航栏 
+             */
             $("#sidebar-menu").append(_html);
             $("#sidebar-menu li a").click(function () {
                 var d = $(this), e = d.next();

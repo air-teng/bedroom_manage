@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.AffairStayOrLeaveDao">
+	
+	<!-- #申请离校申请,插入数据 -->
+	<insert id="stuApplyLeaveSchool"  parameterType="AffairStayOrLeave">
+	insert into affair_stay_or_leave(stu_account,start_time,end_time,apply_reason,affair_status,apply_time,sta_lev)  
+       values(#{stuAccount},#{startTime},#{endTime},#{applyReason},'0',now(),'0')
+	</insert>
+	
+	<!-- #申请留校申请,插入数据 -->
+	<insert id="stuApplyStaySchool"  parameterType="AffairStayOrLeave">
+	insert into affair_stay_or_leave(stu_account,start_time,end_time,apply_reason,affair_status,apply_time,sta_lev)  
+       values(#{stuAccount},#{startTime},#{endTime},#{applyReason},'0',now(),'1')
+	</insert>
+	
+	
+	
+</mapper>
