@@ -13,12 +13,12 @@ import com.bedroom.service.AffairStayOrLeaveService;
  * @author Administrator
  */
 @Controller
-@RequestMapping("/affairStayOrLeave/")
+@RequestMapping("/affair/")
 public class AffairStayOrLeaveController {
 	@Autowired
 	private AffairStayOrLeaveService affairSLService;
 	/**
-	 * 学生申请离校;  /affairStayOrLeave/stuApplyLeaveSchool
+	 * 学生申请离校;  /affair/stuApplyLeaveSchool
 	 */
 	@RequestMapping("stuApplyLeaveSchool")
 	@ResponseBody
@@ -31,7 +31,7 @@ public class AffairStayOrLeaveController {
 		return AjaxResult.oK();
 	}
 	/**
-	 * 学生申请留校;  /affairStayOrLeave/stuApplystaySchool
+	 * 学生申请留校;  /affair/stuApplystaySchool
 	 */
 	@RequestMapping("stuApplystaySchool")
 	@ResponseBody

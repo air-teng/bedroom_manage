@@ -62,7 +62,7 @@ function staySchoolProgram(){
 	param.applyReason=reason;
 	$.ajax({
 		type: "POST",
-		url: "/affairStayOrLeave/stuApplystaySchool",
+		url: "/affair/stuApplystaySchool",
 		data: param,
 		success: function(result){
 			if(result.status=="true"){ 

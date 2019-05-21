@@ -63,7 +63,7 @@ function leaveSchoolProgram(){
 	param.applyReason=reason;
 	$.ajax({
 		type: "POST",
-		url: "/affairStayOrLeave/stuApplyLeaveSchool",
+		url: "/affair/stuApplyLeaveSchool",
 		data: param,
 		success: function(result){
 			if(result.status=="true"){ 
