@@ -14,6 +14,20 @@
        values(#{stuAccount},#{startTime},#{endTime},#{applyReason},'0',now(),'1')
 	</insert>
 	
+	<!-- #查看自己申请的离校信息(未被审核) -->
+	<select id="showApplyLeaveInfo"  parameterType="String"  resultType="AffairStayOrLeave">
+		select * from affair_stay_or_leave  where stu_account=#{stuAccount} and affair_status='0' 	
+	</select>
+	
+	<!-- #删除自己申请的离校申请 -->
+	<delete id="removeApplyLeaveSchool"  parameterType="Integer">
+		delete from affair_stay_or_leave where affair_id=#{affairId}	
+	</delete>
+	
+	<!-- #查看自己留校信息 -->
+	<select id="showApplyStayInfo"  resultType="AffairStayOrLeave"  parameterType="String">
+		select * from affair_stay_or_leave where  stu_account=#{stuAccount} and  sta_lev='1'	
+	</select>
 	
 	
 </mapper>

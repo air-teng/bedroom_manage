@@ -6,6 +6,8 @@
     <link href="../static/css/all.css"  th:href="@{/css/all.css}"  rel="stylesheet"  type="text/css"/>
     <link href="../static/js/editor/css/font-awesome.min.css" th:href="@{/js/editor/css/font-awesome.min.css}"   type="text/css"/>
     <link href="../static/js/editor/css/froala_editor.min.css" th:href="@{/js/editor/css/froala_editor.min.css}"  type="text/css"/>
+      <link th:href="@{/css/jquery.dataTables.min.css}" href="../static/css/bootstrap/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+    
 </head>
 
 <body style="background-color: #e6ecf5">
@@ -57,8 +59,31 @@
    </form>
 </div>
 
+<div class="book_con01">
+    <div  style="font-size:20px"  align="center">离校申请信息</div>
+		 <table id="show-apply-stay"  width="100%" >
+			 <thead align="left">
+			 	<tr>
+			 		<th>申请人账号</th>
+			 		<th>开始时间</th>
+			 		<th>结束时间</th>
+			 		<th>申请原因</th>
+			 		<th>操作</th>
+			 	</tr>
+			 </thead>
+		 	<tbody>
+		 	
+		 	</tbody>
+		</table>
+</div>
+
+
+
+
+
 <script  src="../static/js/jquery/jQuery-2.2.0.min.js" th:src="@{/js/jquery/jQuery-2.2.0.min.js}" ></script>
 <script src="../static/js/editor/js/froala_editor.min.js"  th:src="@{/js/editor/js/froala_editor.min.js}" ></script>
+<script th:src="@{/js/query/jquery.dataTables.min.js}" src="../static/js/query/jquery.dataTables.min.js"></script>
 
 <script src="../static/js/editor/js/plugins/tables.min.js"  th:src="@{/js/editor/js/plugins/tables.min.js}"></script>
 <script src="../static/js/editor/js/plugins/lists.min.js" th:src="@{/js/editor/js/plugins/lists.min.js}"></script>

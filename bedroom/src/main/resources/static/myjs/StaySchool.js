@@ -27,7 +27,8 @@ $(function() {
 	$("#stay-submit").on('click',function(){
 		staySchoolProgram();
 	});
-	
+	//展示留校申请信息
+	showApplyLeaveInfo();
 });
 
 /**
@@ -71,6 +72,8 @@ function staySchoolProgram(){
 			if(result.status=="error"){
 				alert(result.msg);  
 			}
+			// 成功后刷新页面
+            window.location.reload();
 		},
 		error: function(result){
 			alert(result.msg);
@@ -78,5 +81,100 @@ function staySchoolProgram(){
 	});
 	
 };
+
+/**
+ * 展示留校申请信息
+ * @returns
+ */
+function showApplyLeaveInfo(){
+	$("#show-apply-stay").DataTable(
+			{
+				"aLengthMenu": [ 5, 10,20],//设置显示条数
+//				"scrollX":true,
+				"responsive": false,
+		        "bAutoWidth": true, //自动计算列宽
+	    		"ordering": true, //排序
+			    "pageLength": 5,　//初始化显示几条数据
+			    "pagingType": "full_numbers",
+			    "bFilter":false,  //去掉自定义搜索框
+			    "language": {　　// 这是修改语言的显示
+			        "paginate": {
+			            first: "首条",
+			            previous: "前一页",
+			            next: "下一页",
+			            last: "末页"
+			        },
+			        "info": "第_PAGE_页,共_PAGES_页",
+			        "infoEmpty": "未找到相关数据",
+			        "search": "关键字",
+			        "zeroRecords": "未找到相关数据",
+			        "decimal": ".",
+			        "thousands": ","
+			    },
+			    
+			    //ajax实现数据的传递的再现
+			    ajax:{
+	                url: "/affair/showApplyStayInfo",//修改路径即可
+	                type: 'POST',
+	                //用于处理服务器端返回的数据。 dataSrc是DataTable特有的
+	                dataSrc: function (myJson) {
+	                    if (myJson.timeout) {
+	                        return "";
+	                    }
+	                    return myJson;
+	                }
+			    },
+			    columns: [　//这个是显示到界面上的个数据　格式为 {data:'显示的字段名'}
+			        {"data":'stuAccount'},
+			        {"data":'startTime',
+			        	render : function(data){
+			        		return data.split("T")[0]+" "+data.split("T")[1].split(".")[0];
+			        	}
+			        },
+			        {"data":'endTime',
+			        	render : function(data){
+			        		return data.split("T")[0]+" "+data.split("T")[1].split(".")[0];
+			        	}
+			        },
+			        {"data":'applyReason'},
+			        {"data":'affairId',
+			        	render:function(data){
+			        		return '<input type="button" value="删除" onclick="deleteAppliLeaveSchool('+data+')"></input>';
+			        	}
+			        }
+			        
+			    ]
+		});
+};
+
+/**
+ * 删除离校申请
+ * @returns
+ */
+function deleteAppliLeaveSchool(data){
+	var AAA=confirm("确认删除?");
+	if(!AAA){  return  ;   };
+	//
+	$.ajax({
+		type: "POST",
+		url: "/affair/removeApplyLeaveSchool",
+		data: {"affairId":parseInt(data)} ,
+		success: function(result){
+			if(result.status=="true"){ 
+				alert("提交成功"); 
+			}
+			if(result.status=="error"){
+				alert(result.msg);
+			}
+			// 成功后刷新页面
+            window.location.reload();
+		},
+		error: function(result){
+			alert(result.msg);
+		}
+	});
+	
+};
+
 
 
