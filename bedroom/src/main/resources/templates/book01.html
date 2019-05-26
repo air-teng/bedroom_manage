@@ -19,7 +19,7 @@
 			   
 			    <tr> <td><label class="td_label">申请人账号</label></td>
 			        <td colspan="5">  <!-- "${session.user.userAccount}" -->
-			            <input id="student-account" type="text" class="book_input03"  th:value="5120151001"  disabled="disabled"/>
+			            <input id="student-account" type="text" class="book_input03"  th:value="${session.user.userAccount}"  disabled="disabled"/>
 			        </td>
 			    </tr>
 			    
