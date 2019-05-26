@@ -16,5 +16,4 @@ public class AffairLateBackServiceImpl implements AffairLateBackService{
 	public void apply(AffairLateBack affairLateBack) {
 		affairLateBackDao.apply(affairLateBack);
 	}
-
 }

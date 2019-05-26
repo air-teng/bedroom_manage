@@ -1,5 +1,7 @@
 package com.bedroom.service.implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,21 @@ public class AffairChangeServiceImpl implements AffairChangeService{
 	
 	@Autowired
 	private AffairChangeDao affairChangeDao;
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void apply(AffairChange affairChange) {
 		affairChangeDao.apply(affairChange);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<AffairChange> getHistoryList(String stuAccount) {
+		return affairChangeDao.getHistoryList(stuAccount);
 	}
 
 }

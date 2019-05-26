@@ -12,4 +12,5 @@ public interface AffairLateBackDao {
 	 * @param affairLateBack
 	 */
 	void apply(AffairLateBack affairLateBack);
+	
 }

@@ -22,5 +22,10 @@
 		)
 	</insert>
 	
-	
+	<select id="getHistoryList" parameterType="String"  resultType="AffairChange">
+		select * from affair_change
+		<where>
+			stu_account = #{stuAccount}
+		</where>
+	</select>
 </mapper>

@@ -9,4 +9,5 @@ public interface AffairLateBackService {
 	 * @param affairChange
 	 */
 	void apply(AffairLateBack affairLateBack);
+	
 }

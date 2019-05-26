@@ -41,3 +41,13 @@ textarea[name="apply_reason"]{
 textarea[name="apply_reason"]:focus{
 	box-shadow:3px 2px 10px #000 inset;
 }
+/* 表格 */
+#apply_div_table{
+	background:#fff;
+}
+#apply_div_table_tb{
+	border:1px solid #F00;
+}
+#apply_div_table_tb td{
+	border:1px solid #F00;
+}
