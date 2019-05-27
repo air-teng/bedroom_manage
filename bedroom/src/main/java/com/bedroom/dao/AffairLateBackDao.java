@@ -21,7 +21,7 @@ public interface AffairLateBackDao {
 	 * @param stuAccount 用户账号
 	 * @return 晚归申请列表
 	 */
-	List<AffairLateBack> getHistoryList(String userAccount);
+	List<AffairLateBack> getHistoryList(String stuAccount);
 	
 	/**
 	 * 删除某个用户的晚归信息
