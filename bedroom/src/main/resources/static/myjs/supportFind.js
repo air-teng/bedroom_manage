@@ -10,6 +10,7 @@ $(function(){
 })
 function initHistoryApplyTable(){
 	$("#apply_div_table_tb").DataTable({
+		 	"aaSorting": [[4,'desc'],[5,'desc']],
 	        "aLengthMenu": [ 5, 10,20],//设置显示条数
 			"responsive": false,
 	        "bAutoWidth": true, //自动计算列宽
@@ -24,7 +25,8 @@ function initHistoryApplyTable(){
 		            next: "下一页",
 		            last: "末页"
 		        },
-		        "info": "第_PAGE_页,共_PAGES_页",
+		        "lengthMenu": "每页 _MENU_ 条结果",
+		        "info": "第_PAGE_页/共_PAGES_页",
 		        "infoEmpty": "未找到相关数据",
 		        "search": "关键字",
 		        "zeroRecords": "未找到相关数据",
@@ -46,29 +48,29 @@ function initHistoryApplyTable(){
 		    columns: [
 	            {"data": "affairId"},
 	            {"data": "stuAccount"},
-	            {"data": "curBedroomId"},
-	            {"data": "targetBedroomId"},
+	            {"data": "curBedroomName"},
+	            {"data": "targetBedroomName"},
 	            {"data": "applyTime",
 	            	render : function(data){
 	            		if(data==null || data==""){
-	            			return "待定";
+	            			return "-";
 	            		}
-		        		return data.split("T")[0]+" "+data.split("T")[1].split(".")[0];
+	            		return data;
+		        		/*return data.split("T")[0]+" "+data.split("T")[1].split(".")[0];*/
 		        	}
 	            },
 	            {"data": "replyTime",
 	            	render:function(data){
-	            		if(data==null || data == ""){
-	            			return "";
-	            		}else{
-	            			return data.split("T")[0]+" "+data.split("T")[1].split(".")[0];
+	            		if(data==null || data==""){
+	            			return "-";
 	            		}
+	            		return data;
 	            	}
 	            },
 	            {"data": "affairStatus",
 	            	render:function(data){
 	            		if(data == 0){
-	            			return "审核中";
+	            			return "待审核";
 	            		}else if(data == 1){
 	            			return "审核通过";
 	            		}else if(data == 2){
@@ -77,9 +79,34 @@ function initHistoryApplyTable(){
 	            			return "未知状态";
 	            		}
 	            	}
-	            },
+	            },{"data":"affairId",
+	            	render:function(data,type,row,meta){
+	            		if(row.affairStatus == 0){
+	            			return "<a style='color:#08c;cursor:pointer;' onclick='deleteAffair(\""+data+"\")'>删除</a>"
+	            		}else{
+	            			return "<span style='color:red;'>不可修改</span>";
+	            		}
+	            	}
+	            }
 	        ]
 	});
+}
+function deleteAffair(affairId){
+	$.ajax({
+		url:"/affair/deleteChangeAffair",
+		type:"POST",
+		data:{"affairId":affairId},
+		success:function(res){
+			if(res.status == "true"){
+				alert("删除成功");
+				window.location.reload();
+			}else{
+				alert(res.msg);
+			}
+		},error:function(res){
+			alert(res.msg);
+		}
+	})
 }
 /*初始化页面信息*/
 function initApplyPage(){

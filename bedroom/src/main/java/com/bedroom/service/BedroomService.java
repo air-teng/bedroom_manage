@@ -40,6 +40,12 @@ public interface BedroomService {
 	 */
 	List<String> getBuildingCodeList();
 	
+	/**
+	 * 通过寝室号查询它的全名
+	 * @return 全名的一个列表
+	 */
+	List<Map<String,Object>> getBedroomName();
+	
 	
 	
 }

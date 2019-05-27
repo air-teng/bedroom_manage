@@ -1,6 +1,7 @@
 package com.bedroom.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bedroom.common.pojo.AffairChange;
 
@@ -17,5 +18,11 @@ public interface AffairChangeService {
 	 * @param stuAccount 学生账号
 	 * @return 申请历史列表
 	 */
-	List<AffairChange> getHistoryList(String stuAccount);
+	List<Map<String,String>> getHistoryList(String stuAccount);
+	
+	/**
+	 * 删除事务
+	 * @param affairId 事务ID
+	 */
+	void delete(String affairId);
 }

@@ -19,5 +19,13 @@
 			now()
 		)
 	</insert>
-	
+	<select id="getHistoryList" resultType="AffairLateBack">
+		select * from affair_late_back
+	</select>
+	<delete id="delete">
+		delete from affair_late_back
+		<where>
+			affair_id = #{affairId} 
+		</where>
+	</delete>
 </mapper>
