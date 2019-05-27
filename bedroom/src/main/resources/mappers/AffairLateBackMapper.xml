@@ -28,4 +28,22 @@
 			affair_id = #{affairId} 
 		</where>
 	</delete>
+	<select id="getAllBackLateToReply" parameterType="String" resultType="AffairLateBack">
+		SELECT b.*,u.user_name stu_name FROM affair_late_back b 
+		left join user u on b.stu_account = u.user_account
+		left join bedroom bed  on bed.bedroom_id = u.bedroom_id 
+		left join building bu on bu.building_id = bed.building_id
+		<where> bu.building_id in (select building_id from building_manager
+			where building_manager.manager_account = #{userAccount}) 
+		</where>
+	</select>
+	<update id="replyBackLate">
+		update affair_late_back
+		<set>
+			reply_reason = #{replyReason},affair_status = #{affairStatus},reply_time=now()
+		</set>
+		<where>
+			affair_id = #{affairId}
+		</where>
+	</update>
 </mapper>

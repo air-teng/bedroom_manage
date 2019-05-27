@@ -55,6 +55,33 @@ public class AffairDealController {
 		return affairs;
 	}
 	
+	/**
+	 * 宿舍管理员获取所有待审核的寝室交换事务
+	 * @return  待审核的事务
+	 */
+	@RequestMapping(value="getAllChangeToReply",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Map<String,String>> getAllChangeToReply(HttpSession session){
+		User user = (User) session.getAttribute("user");
+		if(user.getUserLevel() == null || !user.getUserLevel().equals("2")) {
+			return null;
+		}
+		return affairService.getAllChangeToReply(user.getUserAccount());
+	}
+	/**
+	 * 宿舍管理员获取所有待审核的晚归事务
+	 * @return  待审核的事务
+	 */
+	@RequestMapping(value="getAllBackLateToReply",method=RequestMethod.GET)
+	@ResponseBody
+	public List<AffairLateBack> getAllBackLateToReply(HttpSession session){
+		User user = (User) session.getAttribute("user");
+		if(user.getUserLevel() == null || !user.getUserLevel().equals("2")) {
+			return null;
+		}
+		return affairLateBackService.getAllBackLateToReply(user.getUserAccount());
+	}
+	
 	@RequestMapping(value="getLateBackHistoryApply",method=RequestMethod.GET)
 	@ResponseBody
 	public List<AffairLateBack> getLateBackHistoryApply(HttpSession session){
@@ -74,6 +101,20 @@ public class AffairDealController {
 	@ResponseBody
 	public AjaxResult deleteLateBack(String affairId) {
 		affairLateBackService.delete(affairId);
+		return AjaxResult.oK();
+	}
+	
+	@RequestMapping(value="changeAffairReply",method=RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult changeAffairReply(Integer affairId,String replyReason,String affairStatus) {
+		affairService.replyChange(affairId,replyReason,affairStatus);
+		return AjaxResult.oK();
+	}
+	
+	@RequestMapping(value="backLateAffairReply",method=RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult backLateAffairReply(Integer affairId,String replyReason,String affairStatus) {
+		affairLateBackService.replyBackLate(affairId,replyReason,affairStatus);
 		return AjaxResult.oK();
 	}
 }

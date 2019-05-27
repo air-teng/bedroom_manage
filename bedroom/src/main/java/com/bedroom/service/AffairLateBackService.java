@@ -24,5 +24,19 @@ public interface AffairLateBackService {
 	 * @param affairId 事务ID
 	 */
 	void delete(String affairId);
+	/**
+	 * 宿舍管理员获取所有待审核的晚归事务
+	 * @param userAccount 用户账号
+	 * @return 晚归事务
+	 */
+	List<AffairLateBack> getAllBackLateToReply(String userAccount);
+	
+	/**
+	 * 晚归审核
+	 * @param affairId 事务ID
+	 * @param replyReason 审核意见
+	 * @param affairStatus 审核状态
+	 */
+	void replyBackLate(Integer affairId, String replyReason, String affairStatus);
 	
 }

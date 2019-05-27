@@ -1,0 +1,53 @@
+#all-to-reply{
+	padding:1em 1em 3em 1em;
+	background:#fff;
+}
+#all-to-reply-title{
+	font-size:18px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-weight:bold;
+}
+#all-to-reply-table{
+	border:1px solid #ccc;
+}
+#all-to-reply-table th,td{
+	border:1px solid #ccc;
+	width:200px;
+	text-align:center;
+}
+#all-to-reply-table tr th:nth-child(6),td:nth-child(6),th:nth-child(7),td:nth-child(7){
+	width:350px;
+	/* background:red; */
+}
+ #all-to-reply-table_paginate{
+	display:inline;
+	/* float:right; */
+	margin-left:750px;
+}
+
+#all-to-reply-table_paginate a{
+	margin:2px;
+	cursor:pointer;
+}
+#all-to-reply-table_paginate a:hover,a:active{
+	color:#598edd;
+}
+/*寝室交换审核模态框*/
+#reply-body-div .reply-body-row{
+	font-size:16px;
+	margin:5px;
+	font-family:"微软雅黑";
+}
+#reply-body-div input{
+	border-radius:5px;
+	width:11em;
+}
+#reply-body-div textarea{
+	border-radius:5px;
+	width:370px;
+}
+#reply-body-div input[disabled="disabled"]{
+	background:#fff;
+	border:0;
+}

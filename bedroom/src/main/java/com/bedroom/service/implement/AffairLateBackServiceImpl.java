@@ -26,4 +26,12 @@ public class AffairLateBackServiceImpl implements AffairLateBackService{
 	public void delete(String affairId) {
 		affairLateBackDao.delete(affairId);
 	}
+	@Override
+	public List<AffairLateBack> getAllBackLateToReply(String userAccount) {
+		return affairLateBackDao.getAllBackLateToReply(userAccount);
+	}
+	@Override
+	public void replyBackLate(Integer affairId, String replyReason, String affairStatus) {
+		affairLateBackDao.replyBackLate(affairId,replyReason,affairStatus);
+	}
 }

@@ -29,10 +29,28 @@
 		</where>
 	</select>
 	
+	<select id="getAllChangeToReply" parameterType="String" resultType="AffairChange">
+		select c.*,user.user_name stu_name from affair_change c left join bedroom b on c.cur_bedroom_id = b.bedroom_id
+		left join building bu on b.building_id = bu.building_id
+		left join user on user.user_account = c.stu_account
+		<where>
+		 bu.building_id in (select building_id from building_manager where manager_account=#{userAccount})
+		</where> 
+	</select>
+	
 	<delete id="delete">
 		delete from affair_change
 		<where>
 			affair_id = #{affairId}
 		</where>
 	</delete>
+	<update id="replyChange">
+		update affair_change
+		<set>
+			reply_reason = #{replyReason},affair_status = #{affairStatus},reply_time=now()
+		</set>
+		<where>
+			affair_id = #{affairId}
+		</where>
+	</update>
 </mapper>

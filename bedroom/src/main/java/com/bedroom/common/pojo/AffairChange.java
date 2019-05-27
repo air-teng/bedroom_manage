@@ -5,6 +5,7 @@ import java.util.Date;
 public class AffairChange {
 	private Integer affairId;// 事务Id
 	private String stuAccount;// 学生账号 
+	private String stuName;//学生姓名
 	private Integer curBedroomId;// 当前寝室号 
 	private Integer targetBedroomId;// 目标寝室号 
 	private String applyReason;// 申请原因 
@@ -65,5 +66,11 @@ public class AffairChange {
 	}
 	public void setReplyTime(Date replyTime) {
 		this.replyTime = replyTime;
+	}
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 public class AffairLateBack {
 	private Integer affairId;//晚归ID 
 	private String stuAccount;//学生账号 
+	private String stuName;//学生姓名
 	private Date backTime;//晚归时间 
 	private String applyReason;//申请原因 
 	private String replyReason;//回复意见 
@@ -58,6 +59,12 @@ public class AffairLateBack {
 	}
 	public void setReplyTime(Date replyTime) {
 		this.replyTime = replyTime;
+	}
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
 	}
 	@Override
 	public String toString() {

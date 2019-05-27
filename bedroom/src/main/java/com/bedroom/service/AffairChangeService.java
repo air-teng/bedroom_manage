@@ -25,4 +25,19 @@ public interface AffairChangeService {
 	 * @param affairId 事务ID
 	 */
 	void delete(String affairId);
+	
+	/**
+	 * 公寓管理员获取所有待审核的寝室交换事务
+	 * @param userAccount 宿舍管理员的
+	 * @return 寝室交换事务
+	 */
+	List<Map<String, String>> getAllChangeToReply(String userAccount);
+	
+	/**
+	 * 根据affairId更改审核原因和审核状态
+	 * @param affairId	事务ID
+	 * @param replyReason 审核原因
+	 * @param affairStatus 审核状态
+	 */
+	void replyChange(Integer affairId, String replyReason, String affairStatus);
 }

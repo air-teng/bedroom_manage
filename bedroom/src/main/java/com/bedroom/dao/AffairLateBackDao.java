@@ -2,6 +2,8 @@ package com.bedroom.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.bedroom.common.pojo.AffairLateBack;
 
 /**
@@ -26,5 +28,17 @@ public interface AffairLateBackDao {
 	 * @param affairId 事务ID
 	 */
 	void delete(String affairId);
+	/**
+	 * 宿舍管理员获取所有待审核的晚归事务
+	 * @return 事务集合
+	 */
+	List<AffairLateBack> getAllBackLateToReply(String userAccount);
+	/**
+	 * 晚归审核
+	 * @param affairId	事务ID
+	 * @param replyReason	审核意见
+	 * @param affairStatus	审核状态
+	 */
+	void replyBackLate(@Param("affairId")Integer affairId, @Param("replyReason")String replyReason, @Param("affairStatus")String affairStatus);
 	
 }

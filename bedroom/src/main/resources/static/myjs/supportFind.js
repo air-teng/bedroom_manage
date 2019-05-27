@@ -67,6 +67,15 @@ function initHistoryApplyTable(){
 	            		return data;
 	            	}
 	            },
+	            {"data": "replyReason",
+	            	render:function(data){
+	            		if(data == null || data == ""){
+	            			return "待定";
+	            		}else{
+	            			return data;
+	            		}
+	            	}
+	            },
 	            {"data": "affairStatus",
 	            	render:function(data){
 	            		if(data == 0){
