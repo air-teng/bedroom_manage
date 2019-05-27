@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.CounselorApprovalDao">
+	
+	<!--====================================离校审批==========================================  -->
+	<!-- #审查自己学院学生的离校申请信息 -->
+	<select id="showALlSelfCollegeStudentApplyLeaveSchoolInfo"  parameterType="String"  resultType="AffairStayOrLeave">
+		select * from affair_stay_or_leave 
+		  where  stu_account in (select user_account from user where user_college_name=#{userCollegeName} and user_level='0')  
+		    and  sta_lev='0' and affair_status='0'
+	</select>
+	
+	<!-- #辅导员审批离校申请,操作为同意 -->
+	<update id="counselorAgreeLeaveSchool"  parameterType="Integer">
+		update affair_stay_or_leave set  reply_reason='同意',affair_status='1',reply_time=now()  
+		   where  affair_id=#{affairId}  	
+	</update>
+	
+	<!-- #辅导员审批离校申请,操作为拒绝 -->
+	<update id="counselorRefuseLeaveSchool"  parameterType="Integer">
+		update affair_stay_or_leave set  reply_reason='拒绝',affair_status='2',reply_time=now()  
+		   where  affair_id=#{affairId}  	
+	</update>
+	
+	<!-- #展示所有离校审批结果 -->
+	<select id="showApprovalResultLeaveSchool"  resultType="AffairStayOrLeave" parameterType="String">
+		select * from affair_stay_or_leave  
+		   where  stu_account in (select user_account from user where user_college_name=#{userCollegeName} and user_level='0')  
+		     and  sta_lev='0' and affair_status!='0'	
+	</select>
+	
+	
+	
+	<!--=====================================留校审批=========================================  -->
+	
+	<!-- #审查自己学院学生的留校申请信息 -->
+	<select id="showALlSelfCollegeStudentApplyStaySchoolInfo"  parameterType="String"  resultType="AffairStayOrLeave">
+		select * from affair_stay_or_leave 
+		  where  stu_account in (select user_account from user where user_college_name=#{userCollegeName} and user_level='0')  
+		    and  sta_lev='1' and affair_status='0'
+	</select>
+	
+	<!-- #辅导员审批留校申请,操作为同意 -->
+	<update id="counselorAgreeStaySchool"  parameterType="Integer">
+		update affair_stay_or_leave set  reply_reason='同意',affair_status='1',reply_time=now()  
+		   where  affair_id=#{affairId}  	
+	</update>
+	
+	<!-- #辅导员审批留校申请,操作为拒绝 -->
+	<update id="counselorRefuseStaySchool"  parameterType="Integer">
+		update affair_stay_or_leave set  reply_reason='拒绝',affair_status='2',reply_time=now()  
+		   where  affair_id=#{affairId}  	
+	</update>
+	
+	<!-- #展示所有留校审批结果 -->
+	<select id="showApprovalResultStaySchool"  resultType="AffairStayOrLeave" parameterType="String">
+		select * from affair_stay_or_leave  
+		   where  stu_account in (select user_account from user where user_college_name=#{userCollegeName} and user_level='0')  
+		     and  sta_lev='1' and affair_status!='0'	
+	</select>
+	
+	
+	
+	
+</mapper>
