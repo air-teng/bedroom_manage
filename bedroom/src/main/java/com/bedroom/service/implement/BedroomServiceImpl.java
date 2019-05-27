@@ -40,5 +40,9 @@ public class BedroomServiceImpl implements BedroomService{
 	public List<String> getBuildingCodeList() {
 		return bedroomDao.getBuildingCodeList();
 	}
+	@Override
+	public List<Map<String,Object>> getBedroomName() {
+		return bedroomDao.getBedroomName();
+	}
 
 }

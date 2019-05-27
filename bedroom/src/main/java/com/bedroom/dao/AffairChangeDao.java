@@ -21,4 +21,10 @@ public interface AffairChangeDao {
 	 * @return 申请历史列表
 	 */
 	List<AffairChange> getHistoryList(String stuAccount);
+	
+	/**
+	 * 删除事务
+	 * @param affairId 事务ID
+	 */
+	void delete(String affairId);
 }

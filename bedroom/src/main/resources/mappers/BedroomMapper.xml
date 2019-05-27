@@ -47,4 +47,9 @@
 		select building_code buildingCode
 		from building
 	</select>
+	
+	<select id="getBedroomName" resultType="java.util.Map">
+		select b.bedroom_id,concat(bu.building_code,'-',b.unit,'-',b.bedroom_code) bedroom_name from building bu left join bedroom b
+		on b.building_id = bu.building_id;
+	</select>
 </mapper>

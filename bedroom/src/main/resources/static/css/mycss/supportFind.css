@@ -43,11 +43,36 @@ textarea[name="apply_reason"]:focus{
 }
 /* 表格 */
 #apply_div_table{
+	padding:1em 1em 3em 1em;
 	background:#fff;
 }
-#apply_div_table_tb{
-	border:1px solid #F00;
+#apply_div_table_title{
+	font-size:18px;
+	text-align:center;
+	font-family:"微软雅黑";
+	font-weight:bold;
 }
-#apply_div_table_tb td{
-	border:1px solid #F00;
+#apply_div_table_tb{
+	border:1px solid #ccc;
+}
+#apply_div_table_tb th,td{
+	border:1px solid #ccc;
+	width:200px;
+	text-align:center;
+}
+#apply_div_table_tb tr th:nth-child(5),th:nth-child(6),td:nth-child(5),td:nth-child(6){
+	width:350px;
+}
+ #apply_div_table_tb_paginate{
+	display:inline;
+	/* float:right; */
+	margin-left:750px;
+}
+
+#apply_div_table_tb_paginate a{
+	margin:2px;
+	cursor:pointer;
+}
+#apply_div_table_tb_paginate a:hover,a:active{
+	color:#598edd;
 }

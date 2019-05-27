@@ -1,5 +1,7 @@
 package com.bedroom.service.implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,13 @@ public class AffairLateBackServiceImpl implements AffairLateBackService{
 	@Override
 	public void apply(AffairLateBack affairLateBack) {
 		affairLateBackDao.apply(affairLateBack);
+	}
+	@Override
+	public List<AffairLateBack> getHistoryList(String userAccount) {
+		return affairLateBackDao.getHistoryList(userAccount);
+	}
+	@Override
+	public void delete(String affairId) {
+		affairLateBackDao.delete(affairId);
 	}
 }

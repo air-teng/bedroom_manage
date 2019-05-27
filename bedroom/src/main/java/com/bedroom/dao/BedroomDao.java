@@ -36,4 +36,10 @@ public interface BedroomDao {
 	 * @return 楼栋代码列表
 	 */
 	List<String> getBuildingCodeList();
+	
+	/**
+	 * 通过寝室号查询它的全名
+	 * @return 全名的一个列表
+	 */
+	List<Map<String,Object>> getBedroomName();
 }

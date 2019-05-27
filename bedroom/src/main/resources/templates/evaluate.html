@@ -54,8 +54,27 @@
 			<input type="submit" value="提交申请" onclick="applyLateBack()"></input>
 		</div>
 	</div>
+	<div class="apply_div_table" id="apply_div_table">
+		<div id="apply_div_table_title">我的申请</div>
+		<table id="apply_div_table_tb">
+			<thead>
+				<tr>
+					<th>申请单号</th>
+					<th>申请账号</th>
+					<th>晚归时间</th>
+					<th>申请时间</th>
+					<th>回复时间</th>
+					<th>审核状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
 	<script src="../static/myjs/datetime-common.js" th:src="@{/myjs/datetime-common.js}"></script>
 	<script src="../static/js/jquery/jQuery-2.2.0.min.js" th:src="@{/js/jquery/jQuery-2.2.0.min.js}"></script>
+	<script th:src="@{/js/query/jquery.dataTables.min.js}" src="../static/js/query/jquery.dataTables.min.js"></script>
 	<script src="../static/myjs/evaluate.js" th:src="@{/myjs/evaluate.js}"></script>
 </body>
 </html>
