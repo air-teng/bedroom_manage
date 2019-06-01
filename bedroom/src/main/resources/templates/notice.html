@@ -5,40 +5,45 @@
 <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
 <title></title>
 
-<link href="../static/css/all.css" rel="stylesheet" th:href="@{/css/all.css}" type="text/css">
-<link href="../static/js/bstable/css/bootstrap.min.css" th:href="@{/js/bstable/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
-<link href="../static/js/bstable/css/bootstrap-table.css" th:href="@{/js/bstable/css/bootstrap-table.css}" rel="stylesheet" type="text/css">
+<link href="../static/css/all.css" rel="stylesheet" th:href="@{/css/all.css}" type="text/css"/>
+<link href="../static/js/bstable/css/bootstrap.min.css" th:href="@{/js/bstable/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+<link href="../static/js/bstable/css/bootstrap-table.css" th:href="@{/js/bstable/css/bootstrap-table.css}" rel="stylesheet" type="text/css"/>
+<link href="../static/css/mycss/notice.css" th:href="@{/css/mycss/notice.css}" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 
-<div class="div_find">
-
-    <p><label class="find_labela">类型：</label><select class="find_input">
-        <option>全部</option>
-        <option>通知</option>
-        <option>公告</option>
-        <option>活动</option>
-        <option>其它</option>
-
-
-    </select><label class="find_labela">标题：</label>
-        <input type="text" class="find_input">
-        <label class="find_labela">发布日期：</label><input type="text" id="demo" class="find_input">
-    </p>
-
+  <div class="div_find all-top">
+  		寝室详情
   </div>
-    <p class="p_but">
-        <i class="add_i" ></i><a href="#" class="add_a" onClick="openlayer()">新增 </a>
-        <i class="del_i" ></i><a href="#" class="add_a">删除</a>
-        <i class="down_i" ></i><a href="#" class="add_a">导出</a>
-
-   </p>
-<p>
-    <table data-url="json/data_alae_list.json" id="table" class="table_style" style="margin: 0 auto" >
-    </table>
-</p>
-
+  <div class="all-middle" id="all-middle">
+  	<div class="left-div">
+  		<div class="classroom-code">东四-B-119</div>
+  		<div class="classroom-memebers">
+  			<div class="classroom-members-title">寝室成员</div>
+  			<div class="classroom-members-row">
+  				<span class="members-row-name">李思呈</span>
+  				<span class="members-row-sex">男</span>
+  				<span class="members-row-account">5120153185</span>
+  				<span class="members-row-college">理学院</span>
+  				<span class="members-row-grade">15级</span>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="right-div">
+  		<div class="display-board-title">信息展示</div>
+  		<div class="display-board-body">
+  			<div class="board-body-row">123</div>
+  			<div class="board-body-row">345</div>
+  			<div class="board-body-row">25</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="all-bottom" id="all-bottom">
+  	<div class="bottom-left"><span class="bottom-left-title">报修</span></div>
+  	<div class="bottom-middle"><span class="bottom-middle-title">缴费</span></div>
+  	<div class="bottom-right"><span class="bottom-right-title">通知</span></div>
+  </div>
 <script src="../static/js/jquery/jQuery-2.2.0.min.js" th:src="@{/js/jquery/jQuery-2.2.0.min.js}"></script>
 <script src="../static/js/bstable/js/bootstrap.min.js" th:src="@{/js/bstable/js/bootstrap.min.js}"></script>
 <script src="../static/js/bstable/js/bootstrap-table.js"  th:src="@{/js/bstable/js/bootstrap-table.js}"></script>
@@ -53,118 +58,5 @@
         laydate({elem: '#demo1'});//绑定元素
     }();
 </script>
-
-<script type="text/javascript">
-    $(function () {
-        $('#table').bootstrapTable({
-            method: "get",
-            striped: true,
-            singleSelect: false,
-            url: "json/notice.json",
-            dataType: "json",
-            pagination: true, //分页
-            pageSize: 10,
-            pageNumber: 1,
-            search: false, //显示搜索框
-            contentType: "application/x-www-form-urlencoded",
-            queryParams: null,
-            columns: [
-                {
-                    checkbox: "true",
-                    field: 'check',
-                    align: 'center',
-                    valign: 'middle'
-                }
-                ,
-                {
-                    title: "编号",
-                    field: 'id',
-                    align: 'center',
-                    valign: 'middle'
-                },
-                {
-                    title: '标题',
-                    field: 'title',
-                    align: 'center',
-                    valign: 'middle'
-                },
-                {
-                    title: '类型',
-                    field: 'type',
-                    align: 'center',
-                    valign: 'middle'
-                },
-
-                {
-                    title: '提交人',
-                    field: 'person',
-                    align: 'center'
-                },
-                {
-                    title: '提交时间',
-                    field: 'date',
-                    align: 'center'
-                },
-
-
-
-                {
-                    title: '操作',
-                    field: 'opear',
-                    align: 'center',
-                    formatter: function (value, row) {
-                        var e = '<a  href="#" title="查看详情" onclick="openlayer(\'' + row.id + '\')">编辑</a> ';
-                        var d = '<a  href="#" title="查看详情" onclick="openlayer(\'' + row.id + '\')">删除</a> ';
-
-
-                        return e+d ;
-                    }
-                }
-            ]
-        });
-    })
-
-</script>
-<script src="../static/js/layer_v2.1/layer/layer.js"  th:src="@{/js/layer_v2.1/layer/layer.js}"></script>
-<script>
-    function openlayer(id){
-        layer.open({
-            type: 2,
-            title: '添加信息',
-            shadeClose: true,
-            shade: 0.5,
-            skin: 'layui-layer-rim',
-//            maxmin: true,
-            closeBtn:1,
-            area: ['98%', '92%'],
-            shadeClose: true,
-            closeBtn: 1,
-            content: 'addNotice.html'
-            //iframe的url
-        });
-    }
-</script>
-<script>
-    $(function () {
-        $(".find_span").click(function () {
-            $("#open").show();
-            $(this).hide();
-            $(".find_span1").show();
-            $("#but_close02").hide();
-            $("#but_open").hide();
-
-        })
-        $(".find_span1").click(function () {
-            $("#open").hide();
-            $(this).hide();
-            $(".find_span").show();
-            $("#but_open").show();
-            $("#but_close02").show();
-
-        })
-
-    })
-</script>
-
 </body>
 </html>

@@ -3,7 +3,7 @@ $(function(){
 })
 function initAllToReplyTable(){
 	$("#all-to-reply-table").DataTable({
-		 	"aaSorting": [[4,'desc'],[5,'desc']],
+		 	"aaSorting": [[6,'asc']],
 	        "aLengthMenu": [ 5, 10,20],//设置显示条数
 			"responsive": false,
 	        "bAutoWidth": true, //自动计算列宽
