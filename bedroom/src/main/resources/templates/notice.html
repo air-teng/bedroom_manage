@@ -8,48 +8,175 @@
 <link href="../static/css/all.css" rel="stylesheet" th:href="@{/css/all.css}" type="text/css"/>
 <link href="../static/js/bstable/css/bootstrap.min.css" th:href="@{/js/bstable/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
 <link href="../static/js/bstable/css/bootstrap-table.css" th:href="@{/js/bstable/css/bootstrap-table.css}" rel="stylesheet" type="text/css"/>
+<link th:href="@{/css/bootstrap/jquery.dataTables.min.css}" href="../static/css/bootstrap/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <link href="../static/css/mycss/notice.css" th:href="@{/css/mycss/notice.css}" rel="stylesheet" type="text/css"/>
-
+<script th:inline="javascript">
+	var userPermission = [[${session.user}]];//以thymeleaf的形式从session中取出值
+	if(userPermission == null){
+		var href_path = window.location.href;
+		window.location.href = href_path.split("/")[0]+"//"+href_path.split("/")[2];
+	}
+</script>
 </head>
 <body>
-
-  <div class="div_find all-top">
-  		寝室详情
+  <div id="bedrooms-list" style="display:none;">
+  	<table id="bedrooms-tb">
+  		<thead>
+  			<tr>
+  				<th>序号</th>
+  				<th>寝室ID</th>
+  				<th>楼栋</th>
+  				<th>单元</th>
+  				<th>寝室号</th>
+  				<th>操作</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr>
+  				<td>1</td>
+  				<td>1230101</td>
+  				<td>东四</td>
+  				<td>B</td>
+  				<td>119</td>
+  				<td><button onclick="detailForbedroom()">查看</button></td>
+  			</tr>
+  			<tr>
+  				<td>2</td>
+  				<td>1230102</td>
+  				<td>东四</td>
+  				<td>B</td>
+  				<td>120</td>
+  				<td><button onclick="detailForbedroom()">查看</button></td>
+  			</tr>
+  			<tr>
+  				<td>3</td>
+  				<td>1230103</td>
+  				<td>东四</td>
+  				<td>B</td>
+  				<td>121</td>
+  				<td><button onclick="detailForbedroom()">查看</button></td>
+  			</tr>
+  		</tbody>
+  	</table>
   </div>
-  <div class="all-middle" id="all-middle">
-  	<div class="left-div">
-  		<div class="classroom-code">东四-B-119</div>
-  		<div class="classroom-memebers">
-  			<div class="classroom-members-title">寝室成员</div>
-  			<div class="classroom-members-row">
-  				<span class="members-row-name">李思呈</span>
-  				<span class="members-row-sex">男</span>
-  				<span class="members-row-account">5120153185</span>
-  				<span class="members-row-college">理学院</span>
-  				<span class="members-row-grade">15级</span>
-  			</div>
-  		</div>
-  	</div>
-  	<div class="right-div">
-  		<div class="display-board-title">信息展示</div>
-  		<div class="display-board-body">
-  			<div class="board-body-row">123</div>
-  			<div class="board-body-row">345</div>
-  			<div class="board-body-row">25</div>
-  		</div>
-  	</div>
-  </div>
-  <div class="all-bottom" id="all-bottom">
-  	<div class="bottom-left"><span class="bottom-left-title">报修</span></div>
-  	<div class="bottom-middle"><span class="bottom-middle-title">缴费</span></div>
-  	<div class="bottom-right"><span class="bottom-right-title">通知</span></div>
+  <div id="bedroom-detail-div" style="display:none;">
+	  <div class="div_find all-top">
+	  		寝室详情
+	  </div>
+	  <div class="all-middle" id="all-middle">
+	  	<div class="left-div">
+	  		<div class="bedroom-code">东四-B-119</div>
+	  		<div class="bedroom-memebers">
+	  			<div class="bedroom-members-title">寝室成员</div>
+	  			<div class="bedroom-members-thead">
+	  				<span class="members-row-name">姓名</span>
+	  				<span class="members-row-sex">性别</span>
+	  				<span class="members-row-account">学号</span>
+	  				<span class="members-row-college">学院</span>
+	  				<span class="members-row-grade">年级</span>
+	  			</div>
+	  			<div class="bedroom-members-row">
+	  				<span class="members-row-name">杨舒然</span>
+	  				<span class="members-row-sex">男</span>
+	  				<span class="members-row-account">5120153191</span>
+	  				<span class="members-row-college">理学院</span>
+	  				<span class="members-row-grade">15级</span>
+	  			</div>
+	  			<div class="bedroom-members-row">
+	  				<span class="members-row-name">袁棋</span>
+	  				<span class="members-row-sex">男</span>
+	  				<span class="members-row-account">5120150593</span>
+	  				<span class="members-row-college">理学院</span>
+	  				<span class="members-row-grade">15级</span>
+	  			</div>
+	  			<div class="bedroom-members-row">
+	  				<span class="members-row-name">滕云飞</span>
+	  				<span class="members-row-sex">男</span>
+	  				<span class="members-row-account">5120155527</span>
+	  				<span class="members-row-college">理学院</span>
+	  				<span class="members-row-grade">15级</span>
+	  			</div>
+	  			<div class="bedroom-members-row">
+	  				<span class="members-row-name">李思呈</span>
+	  				<span class="members-row-sex">男</span>
+	  				<span class="members-row-account">5120153185</span>
+	  				<span class="members-row-college">理学院</span>
+	  				<span class="members-row-grade">15级</span>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<div class="right-div" id="right-div">
+	  		<div class="display-board-title">信息展示</div>
+	  		<div>
+		  		<div class="display-board-row">
+		  			<div class="board-row-title">当前月寝室卫生</div>
+		  			<div class="board-row-body">
+		  				<div class="row-body-1"><span class="body-week">第11周</span><span class="body-grade">A</span></div>
+		  				<div class="row-body-2"><span class="body-week">第12周</span><span class="body-grade">C</span></div>
+		  				<div class="row-body-3"><span class="body-week">第13周</span><span class="body-grade">B</span></div>
+		  				<div class="row-body-4"><span class="body-week">第14周</span><span class="body-grade">B</span></div>
+		  			</div>
+		  		</div>
+		  		<div class="display-board-row">
+		  			<div class="board-row-title">当前月缺勤人员</div>
+		  			<div class="board-row-body">
+		  				<div class="row-body-1"><span class="body-name">李思呈</span><span class="body-date">2015-05-28</span></div>
+		  				<div class="row-body-2"><span class="body-name">李思呈</span><span class="body-date">2015-05-24</span></div>
+		  				<div class="row-body-3"><span class="body-name">李思呈</span><span class="body-date">2015-05-18</span></div>
+		  				<div class="row-body-4"><span class="body-name">李思呈</span><span class="body-date">2015-05-09</span></div>
+		  			</div>
+		  		</div>
+	  		</div>
+	  	</div>
+	  </div>
+	  <div class="all-bottom" id="all-bottom" th:if="${session.user!=null and session.user.userLevel=='0'}">
+	  	<div class="bottom-left" id="submit-to-fix"><span class="bottom-left-title">报修</span></div>
+	  	<div class="bottom-middle"><span class="bottom-middle-title">缴费</span></div>
+	  	<div class="bottom-right"><span class="bottom-right-title">通知</span></div>
+	  </div>
+	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">报修申请</h4>
+		            </div>
+		            <div class="modal-body" id="apply-body-div">
+						<div class="apply-body-row">
+							申请寝室
+							<input name="applyClassroom" disabled="disabled" value="东四-B-119"></input>
+						</div>
+						<div class="apply-body-row">
+							申请人
+							<input name="name" disabled="disabled" value="李思呈"></input>
+							申请账号
+							<input name="stuAccount" disabled="disabled" value="5120153185"></input>
+						</div>
+						<div class="apply-body-row">
+							报修物品
+							<input type="text" name="applyFixObject"></input>
+						</div>
+						<div class="reply-body-row">
+							报修情况描述<br></br>
+							<textarea name="applyDetail"></textarea>
+						</div>
+					</div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                <button type="button" onclick="applyFixSubmit()" class="btn btn-primary">提交报修</button>
+		            </div>
+		        </div><!-- /.modal-content -->
+		    </div><!-- /.modal -->
+	</div>
   </div>
 <script src="../static/js/jquery/jQuery-2.2.0.min.js" th:src="@{/js/jquery/jQuery-2.2.0.min.js}"></script>
+<script th:src="@{/js/query/jquery.dataTables.min.js}" src="../static/js/query/jquery.dataTables.min.js"></script>
 <script src="../static/js/bstable/js/bootstrap.min.js" th:src="@{/js/bstable/js/bootstrap.min.js}"></script>
 <script src="../static/js/bstable/js/bootstrap-table.js"  th:src="@{/js/bstable/js/bootstrap-table.js}"></script>
 <script src="../static/js/bstable/js/bootstrap-table-zh-CN.min.js" th:src="@{/js/bstable/js/bootstrap-table-zh-CN.min.js}"></script>
 
 <script src="../static/js/date/js/laydate.js"  th:src="@{/js/date/js/laydate.js}"></script>
+<script src="../static/myjs/notice.js"  th:src="@{/myjs/notice.js}"></script>
 
 <script>
     !function(){

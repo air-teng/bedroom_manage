@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bedroom.dao.ReportRepairDao">
+	<insert id="addReportRepair" parameterType="ReportRepair">
+		insert into report_repair(bedroom_code,report_name,report_account,report_object,report_detail,report_datetime)
+		values (#{bedroomCode},#{reportName},#{reportAccount},#{reportObject},#{reportDetail},now())
+	</insert>
+</mapper>
