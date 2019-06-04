@@ -5,24 +5,25 @@ import java.util.Date;
 
 /**
  * 用户实体类
- 	user_account	varchar(11)
-	user_name	varchar(128)
-	user_password	varchar(30)
-	user_nickname	varchar(128)
-	user_sex	varchar(10)
-	user_age	int(11)
-	user_phone	varchar(15)
-	user_college_name	varchar(64)
-	grade_level	varchar(4)
+ 	user_account	varchar
+	user_name	varchar
+	user_password	varchar
+	user_nickname	varchar
+	user_sex	varchar
+	user_age	int
+	user_phone	varchar
+	user_college_name	varchar
+	grade_level	varchar
 	user_foundtime	datetime
-	bedroom_id	int(11)
-	user_level	char(0)
+	bedroom_id	int
+	user_level	char
+
  *
  */
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	//
-	private String  userAccount;//主键,自增长
+	private String  userAccount;//主键,bu自增长
 	private String  userName;//用户账号
 	private String  userPassword;//用户t密码
 	private String  userNickname;//用户昵称
@@ -110,7 +111,6 @@ public class User implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	//
 	@Override
 	public String toString() {
 		return "User [userAccount=" + userAccount + ", userName=" + userName + ", userPassword=" + userPassword

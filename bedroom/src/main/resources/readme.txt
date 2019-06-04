@@ -12,9 +12,9 @@ yc喜爱表格样式
 
 
 辅导员审批:
-	book02.html   离校审批
+	book02.html   		离校审批
 	peoplefind.html 	留校审批
-		 
+	myMes.html			个人信息 
 	
 		 
 		 

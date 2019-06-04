@@ -1,5 +1,7 @@
 package com.bedroom.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bedroom.common.AjaxResult;
+import com.bedroom.common.pojo.College;
 import com.bedroom.common.pojo.User;
 import com.bedroom.service.UserService;
 /**
@@ -49,5 +52,43 @@ public class UserController {
 		}
 		return AjaxResult.oK();
 	}
-
+	
+	
+//	/user/updateUserInfo
+	/**
+	 * 修改个人信息
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("updateUserInfo")
+	@ResponseBody
+	public AjaxResult updateUserInfo(User user,HttpSession session) {
+		try {
+			//获取所有学院信息
+			List<College> list=userService.showAllCollegeName();
+			Boolean flag=false;
+			for (int i=0;i<list.size();i++) {
+				//如果输入学院信息有一致的信息,改变flag标志
+				if(list.get(i).getCollegeName().equals(user.getUserCollegeName())) {
+					flag=true;
+					break;
+				}
+			}
+			if(flag!=true) {
+				return AjaxResult.error("输入的学院信息有误");
+			}
+			//获取用户信息并封装数据给数据库
+			User sesUser = (User) session.getAttribute("user");
+			user.setUserAccount(sesUser.getUserAccount());
+			userService.updateUserInfo(user);
+			//重新给session赋值
+			User newUser=userService.showUserInfoByUserAccount(user.getUserAccount());
+			session.setAttribute("user", newUser);
+		} catch (Exception e) {
+			return AjaxResult.error();
+		}
+		return AjaxResult.oK("修改成功!");
+	}
+	
+	
 }
